@@ -1,0 +1,3 @@
+- split phrases into n-grams and use that to weigh different files
+- use levenshtein distance for spelling corrections
+- support synonym dictionary with custom entries
