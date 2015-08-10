@@ -1,5 +1,11 @@
 require "instance"
 
+class Array
+  def to_hash
+    map(&:to_hash)
+  end
+end
+
 class Index
   attr_reader :files
   # initialize with a list of files.
@@ -14,6 +20,23 @@ class Index
       index_words(file, @index)
     end
     @index
+  end
+
+  def find word
+    instances = index[word]
+    return [] unless instances
+
+    files = Hash.new(0)
+    instances.each do |i|
+      files[i.file] += 1
+    end
+
+    # sort by # of occurrences
+    sorted = files.to_a.sort do |a, b|
+      b[1] <=> a[1]
+    end
+
+    sorted
   end
 
   protected
