@@ -7,11 +7,10 @@ class Server
   def initialize glob, verbose = true
     files = Dir[glob].to_a
     @index = Index.new files
-    if verbose
-      log "loaded files:"
-      files.each do |file|
-        log file
-      end
+    return if verbose
+    log "loaded files:"
+    files.each do |file|
+      log file
     end
   end
 
