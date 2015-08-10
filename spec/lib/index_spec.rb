@@ -1,13 +1,14 @@
-require "server"
-RSpec.describe "Server:" do
+require "index"
+RSpec.describe "Index:" do
   describe "initialize" do
     before :all do
       @files = Dir[File.join(FIXTURES_DIR, "*.txt")].to_a
-      @s = Server.new @files
+      @i = Index.new @files
     end
 
     it "should have loaded files correctly" do
-      @files.map { |f| File.basename(f) }.should == ["one.txt", "two.txt"]
+      @loaded = @files.map { |f| File.basename(f) }
+      expect(@loaded).to eq(["one.txt", "two.txt"])
     end
 
     it "should make an inverted index correctly" do
@@ -16,7 +17,7 @@ RSpec.describe "Server:" do
         "there" => [ins("one.txt", 1)],
         "adit"  => [ins("one.txt", 2), ins("two.txt", 3)]
       }
-      @s.index.should == @expected
+      expect(@i.index).to eq(@expected)
     end
   end
 end

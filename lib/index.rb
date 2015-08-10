@@ -1,5 +1,6 @@
-Instance = Struct.new(:file, :line)
-class Server
+require "instance"
+
+class Index
   attr_reader :files
   # initialize with a list of files.
   def initialize files
