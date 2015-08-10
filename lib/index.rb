@@ -1,11 +1,5 @@
 require "instance"
 
-class Array
-  def to_hash
-    map(&:to_hash)
-  end
-end
-
 class Index
   attr_reader :files
   # initialize with a list of files.

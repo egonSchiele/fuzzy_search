@@ -12,7 +12,7 @@ RSpec.describe "Instance:" do
 
     it "to_hash" do
       expected = { "file": "foo.txt", "line": 10 }
-      expect(@i.to_hash).to eq(expected)
+      expect(@i.to_json).to eq(expected)
     end
   end
 end

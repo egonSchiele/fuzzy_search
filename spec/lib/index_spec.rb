@@ -24,5 +24,10 @@ RSpec.describe "Index:" do
       expected = res([["two.txt", 2], ["one.txt", 1]])
       expect(@i.find("hello")).to eq(expected)
     end
+
+    it "should find there in one.txt but not two.txt" do
+      expected = res([["one.txt", 1]])
+      expect(@i.find("there")).to eq(expected)
+    end
   end
 end
